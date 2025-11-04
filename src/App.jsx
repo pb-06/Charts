@@ -1,17 +1,12 @@
-/* TODO - npm install react-router-dom recharts react-google-charts c3 d3 */
-
-/* TODO - read about React Charts (ReCharts): https://recharts.github.io/ */
-/* TODO - read about React Google Charts: https://www.react-google-charts.com/ */
-/* TODO - read about C3 (D3): https://c3js.org/ */
-
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
-// TODO import fgraphStatic image
-// TODO import chartCommonData, COLORS
-// TODO import LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine from Recharts
-// TODO import Chart from React-Google-Charts
+
+import { fgraphStatic } from "./assets/fgraphStatic";
+import { chartCommonData, COLORS } from "./modules/chart-common-data";
+
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
+import { Chart } from "react-google-charts";
 import C3LineChart from "./components/C3LineChart/C3LineChart";
 
 // Main top menu bar
@@ -33,7 +28,7 @@ function MainNav() {
 
 // Second menu bar under charts only
 function ChartsSubNav() {
-  const location = useLocation(); 
+  const location = useLocation();
   if (!location.pathname.startsWith("/charts")) return null;
 
   return (
@@ -65,35 +60,44 @@ const f = x => x // TODO - function should return ( sin(x) + 2x ) / x number by 
 // TODO - outsource component
 const DataPage = () => <>
   <h2>Data</h2>
-  <p><strong>Title:</strong> TODO chartCommonData title</p>
+  <p><strong>Title:</strong> {chartCommonData.title}</p>
   <p>
-    TODO table<br />
-    TODO header cells: Country, Unemployment rate [%]<br />
+    <table>
+      <tr>
+        <th>Country</th>
+        <th>Unemployment rate [%]</th>
+      </tr>
+
+      {chartCommonData.data.map(({ label, value }) => <tr key={label}>
+        <td>{label}</td>
+        <td>{value}</td>
+      </tr>)}
+    </table>
     TODO body cells: chartCommonData data label, value<br />
   </p>
   <p>
-    <img src="TODO fgraphStatic" alt="fgraphStatic.png" />
+    <img src={fgraphStatic} alt="fgraphStatic.png" />
   </p>
 </>;
 // TODO - outsource component
 const RechartsPage = props => <>
- <h2>React Charts Page</h2>
-    <div>TODO - draw Recharts LineChart</div>
+  <h2>React Charts Page</h2>
+  <div>TODO - draw Recharts LineChart</div>
 
-    <div>TODO - draw Recharts BarChart</div>
+  <div>TODO - draw Recharts BarChart</div>
 
-    <div>TODO - draw Recharts PieChart in responsive container, colored by COLORS</div>
+  <div>TODO - draw Recharts PieChart in responsive container, colored by COLORS</div>
 
-    {/* Plot f function: */}
-    <div>TODO - plot f function by 1.5...3.2 domain and limes line</div>
+  {/* Plot f function: */}
+  <div>TODO - plot f function by 1.5...3.2 domain and limes line</div>
 </>;
 // TODO - outsource component
 const GoogleChartsPage = props => <>
- <h2>Google Charts Page</h2>
- <div>TODO - insert Google LineChart with chartCommonData data</div>
- <div>TODO - insert Google column bar chart with chartCommonData data</div>
- <div>TODO - insert Google PieChart with chartCommonData data</div>
- </>;
+  <h2>Google Charts Page</h2>
+  <div>TODO - insert Google LineChart with chartCommonData data</div>
+  <div>TODO - insert Google column bar chart with chartCommonData data</div>
+  <div>TODO - insert Google PieChart with chartCommonData data</div>
+</>;
 // TODO - outsource component
 const C3ChartsPage = props => <>
   <h2>C3.js Charts Page</h2>
