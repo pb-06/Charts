@@ -54,7 +54,7 @@ function ContentArea({ children }) {
 }
 
 // math function to plot
-const f = x => x // TODO - function should return ( sin(x) + 2x ) / x number by real x, angle measured in radian
+const f = x => (Math.sin(x) + 2.0 * x) / x
 
 // Placeholder pages
 // TODO - outsource component
@@ -94,7 +94,7 @@ const RechartsPage = props => <>
     }}
   >
     <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="label" padding={{left: 30}} />
+    <XAxis dataKey="label" padding={{ left: 30 }} />
     <YAxis width="auto" />
     <Tooltip />
     <Legend />
