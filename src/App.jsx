@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 
-import { fgraphStatic } from "./assets/fgraphStatic";
+//import { fgraphStatic } from "./assets/fgraphStatic";
 import { chartCommonData, COLORS } from "./modules/chart-common-data";
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
@@ -76,13 +76,30 @@ const DataPage = () => <>
     TODO body cells: chartCommonData data label, value<br />
   </p>
   <p>
-    <img src={fgraphStatic} alt="fgraphStatic.png" />
+    <img src="{fgraphStatic}" alt="fgraphStatic.png" />
   </p>
 </>;
 // TODO - outsource component
 const RechartsPage = props => <>
   <h2>React Charts Page</h2>
-  <div>TODO - draw Recharts LineChart</div>
+  <LineChart
+    style={{ width: '100%', maxWidth: '700px', height: '100%', maxHeight: '70vh', aspectRatio: 1.618 }}
+    responsive
+    data={chartCommonData.data}
+    margin={{
+      top: 5,
+      right: 0,
+      left: 0,
+      bottom: 5,
+    }}
+  >
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="label" padding={{left: 30}} />
+    <YAxis width="auto" />
+    <Tooltip />
+    <Legend />
+    <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+  </LineChart>
 
   <div>TODO - draw Recharts BarChart</div>
 

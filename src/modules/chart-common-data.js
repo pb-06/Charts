@@ -2,9 +2,9 @@ var chartCommonData = {
     title: 'Unemployment rate per cent 2024',
     data: [
         { label: 'Czechia', value: 3 },
-        { label: 'Greece', value: 'TODO - find value and round to integer' },
+        { label: 'Greece', value: 10 },
         { label: 'Poland', value: 3 },
-        { label: 'Hungary', value: 'TODO - find value and round to integer' },
+        { label: 'Hungary', value: 6 },
         { label: 'Spain', value: 11 },
     ],
 }
